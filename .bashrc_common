@@ -1,6 +1,3 @@
-#alias matrix='cd ~/matrix'
-#alias tnsrc='cd ~/matrix/svn/mars/FTS-TN/'
-#alias cd--svn='cd /home/paza/matrix/svn'
 alias la='ls -la'
 
 goto-matrix()
