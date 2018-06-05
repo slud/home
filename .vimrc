@@ -79,4 +79,4 @@ set expandtab
 
 
 set list
-set listchars=tab:>-,trail:.
+set listchars=tab:->,trail:.
