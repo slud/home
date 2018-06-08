@@ -1,6 +1,35 @@
 alias la='ls -la'
 
-tacz-main-cpp()
+paza-goto-farasvn()
+{
+  cd ~/svn
+  la
+}
+
+paza-goto-matrix()
+{
+  if [ -d ~/matrix ];
+  then
+    cd ~/matrix;
+    la;
+  else
+   echo "Katalog matrix nie jest zdefiniowany na tym komputerze.";
+  fi
+}
+
+paza-goto-paza()
+{
+  cd ~/paza
+  la
+}
+
+paza-hgrep()
+{
+#	echo "grepping with $1"
+	history | grep $1
+}
+
+paza-main-cpp()
 {
 	if [ -f ./main.cpp ]
 	then
@@ -19,36 +48,7 @@ tacz-main-cpp()
 	fi
 }
 
-goto-matrix()
-{
-  if [ -d ~/matrix ];
-  then
-    cd ~/matrix;
-    la;
-  else
-   echo "Katalog matrix nie jest zdefiniowany na tym komputerze.";
-  fi
-}
-
-goto-farasvn()
-{
-  cd ~/svn
-  la
-}
-
-goto-paza()
-{
-  cd ~/paza
-  la
-}
-
-hgrep()
-{
-#	echo "grepping with $1"
-	history | grep $1
-}
-
-mkcd()
+paza-mkcd()
 {
 	mkdir -p -- "$1" &&
 	cd -P -- "$1"
