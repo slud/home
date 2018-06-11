@@ -1,5 +1,16 @@
 alias la='ls -la'
 
+cdl()
+{
+  cd $1
+  la
+}
+
+paza-cdl()
+{
+  cdl $1
+}
+
 paza-goto-farasvn()
 {
   cd ~/svn
