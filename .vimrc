@@ -38,6 +38,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'honza/vim-snippets'
 Plugin 'sirver/ultisnips'
+Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

@@ -46,7 +46,18 @@ print_sep
 
 echo "Setting up .vimrc to use github version."
 
-if [ -f $HOME/.vimrc ]
+function link_vimrc()
+{
+  echo "Linking .vimrc from" $PWD/.vimrc
+  if [ ! -f $PWD/.vimrc ]
+  then
+    echo "No" $PWD"/.vimrc file. No linking performed."
+  else
+    ln -s $PWD/.vimrc $HOME/.vimrc
+  fi
+}
+
+if [ -f $HOME/.vimrc -o -L $HOME/.vimrc ]
 then
   echo $HOME/".vimrc already exists. Replace [y/n]?"
   read replace_vimrc
@@ -54,10 +65,10 @@ then
   then
     echo "Deleting old .vimrc"
     rm $HOME/.vimrc
-    ln -s .vimrc $HOME/.vimrc
+    link_vimrc 
   fi
 else
-  ln -s .vimrc $HOME/.vimrc
+ link_vimrc 
 fi
 
 print_sep
