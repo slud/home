@@ -64,3 +64,100 @@ paza-mkcd()
 	mkdir -p -- "$1" &&
 	cd -P -- "$1"
 }
+
+############################################################################
+# .bashrc part form manjaro's .bashrc
+# I put it here as it has nice color definitions
+############################################################################
+
+# prompt
+#PS1='[\u@\h \W]\$ '
+
+function set_prompt ( )
+{
+    # Prompt setup
+    # ##################
+
+    # Black            \e[0;30m
+    # Blue             \e[0;34m
+    # Green            \e[0;32m
+    # Cyan             \e[0;36m
+    # Red              \e[0;31m
+    # Purple           \e[0;35m
+    # Brown            \e[0;33m
+    # Gray             \e[0;37m
+    # Dark Gray        \e[1;30m
+    # Light Blue       \e[1;34m
+    # Light Green      \e[1;32m
+    # Light Cyan       \e[1;36m
+    # Light Red        \e[1;31m
+    # Light Purple     \e[1;35m
+    # Yellow           \e[1;33m
+    # White            \e[1;37m
+
+    local COLOR_DEFAULT='\[\e[0m\]'
+    local COLOR_BLACK='\[\e[0;30m\]'
+    local COLOR_BLUE='\[\e[0;34m\]'
+    local COLOR_GREEN='\[\e[0;32m\]'
+    local COLOR_CYAN='\[\e[0;36m\]'
+    local COLOR_RED='\[\e[0;31m\]'
+    local COLOR_PURPLE='\[\e[0;35m\]'
+    local COLOR_BROWN='\[\e[0;33m\]'
+    local COLOR_GRAY='\[\e[0;37m\]'
+    local COLOR_DARK_GRAY='\[\e[1;30m\]'
+    local COLOR_L_BLUE='\[\e[1;34m\]'
+    local COLOR_L_GREEN='\[\e[1;32m\]'
+    local COLOR_L_CYAN='\[\e[1;36m\]'
+    local COLOR_L_RED='\[\e[1;31m\]'
+    local COLOR_L_PURPLE='\[\e[1;35m\]'
+    local COLOR_YELLOW='\[\e[1;33m\]'
+    local COLOR_WHITE='\[\e[1;37m\]'
+
+    local PS1_SET_TITLE='\[\e]0;\w\a\]'
+
+    local PS1_SET_TIME="${COLOR_DEFAULT}\t"
+    local PS1_SET_RET_CODE="${COLOR_L_RED}(\$?)"
+    local PS1_SET_USER="${COLOR_L_GREEN}\u@\h"
+    local PS1_SET_PWD="${COLOR_YELLOW}\w"
+
+    local PS1_LN_1="${PS1_SET_TITLE}\n"
+    local PS1_LN_2="${PS1_SET_TIME} ${PS1_SET_RET_CODE} "
+    local PS1_LN_2="${PS1_LN_2}${PS1_SET_USER} ${PS1_SET_PWD} ${COLOR_DEFAULT}\n"
+
+    echo "${PS1_LN_1}${PS1_LN_2}"
+}
+
+#PS1=$(set_prompt)
+#export PS1=${PS1}'$ '
+#unset -f set_prompt
+
+function set_ps1 ( ) {
+	#echo "\$?" --- last ret
+    Last_Command="\$?" # Must come first!
+    Yellow='\[\e[01;33m\]'
+    Blue='\[\e[01;34m\]'
+    White='\[\e[01;37m\]'
+    Red='\[\e[01;31m\]'
+    Green='\[\e[01;32m\]'
+    Reset='\[\e[00m\]'
+    FancyX='\342\234\227'
+    Checkmark='\342\234\223'
+	
+	PPS1="$Yellow\w\n"
+
+    # Add a bright white exit status for the last command
+
+    # Print the working directory and prompt marker in blue, and reset
+    # the text color to the default.
+    PPS1+="$Blue\t $ $Reset"
+	echo ${PPS1}
+}
+#PROMPT_COMMAND='set_ps1'
+#PS1=$(set_ps1)
+
+############################################################################
+############################################################################
+
+# PS from old debian (purple-blue tree wallpaper)
+# Two line promopt shell blue-white/cyan
+PS1='\n\[\033[1;34m\]\342\226\210\342\226\210 \u @ \[\e[1;37m\]\w\n\[\033[0;36m\]\342\226\210\342\226\210 \t $ \[\033[0;39m\]'
