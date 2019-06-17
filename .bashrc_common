@@ -1,5 +1,10 @@
 alias la='ls -la'
 
+gits()
+{
+  git status
+}
+
 cdl()
 {
   cd $1
